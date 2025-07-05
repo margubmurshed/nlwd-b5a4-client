@@ -16,7 +16,7 @@ interface PaginationElementProps {
     meta: TPaginationMeta
 }
 
-const PaginationElement = ({setCurrentPage, currentPage, meta}: PaginationElementProps) => {
+const PaginationElement = ({ setCurrentPage, currentPage, meta }: PaginationElementProps) => {
     return (
         <Pagination className="mt-5">
             <PaginationContent>
@@ -25,18 +25,18 @@ const PaginationElement = ({setCurrentPage, currentPage, meta}: PaginationElemen
                     "text-gray-400 select-none": currentPage === 1
                 })}>
                     <PaginationPrevious onClick={() => {
-                        if(currentPage > 1){
+                        if (currentPage > 1) {
                             setCurrentPage(currentPage - 1)
                         }
                     }} />
                 </PaginationItem>
-                {Array.from({length: meta.totalPages}, (_,i) => {
+                {Array.from({ length: meta.totalPages }, (_, i) => {
                     const page = i + 1;
                     return (
-                    <PaginationItem className="cursor-pointer">
-                    <PaginationLink onClick={() => setCurrentPage(page)} isActive={currentPage === page}>{page}</PaginationLink>
-                </PaginationItem>
-                )
+                        <PaginationItem className="cursor-pointer" key={i}>
+                            <PaginationLink onClick={() => setCurrentPage(page)} isActive={currentPage === page}>{page}</PaginationLink>
+                        </PaginationItem>
+                    )
                 })}
                 <PaginationItem className="cursor-pointer">
                     <PaginationEllipsis />
@@ -46,7 +46,7 @@ const PaginationElement = ({setCurrentPage, currentPage, meta}: PaginationElemen
                     "text-gray-400 select-none": currentPage === meta.totalPages
                 })}>
                     <PaginationNext onClick={() => {
-                        if(!(meta.totalPages === currentPage)){
+                        if (!(meta.totalPages === currentPage)) {
                             setCurrentPage(currentPage + 1)
                         }
                     }} />
